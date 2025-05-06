@@ -1,18 +1,15 @@
-name: Greetings
+name: Welcome_new_contributors
 on:
-  [pull_request_target, issues]
-
+  pull_request_target, issues:
+      types: [opened]
 jobs:
   greet:
     runs-on: ubuntu-latest
-      prmissions:
-        issues: write
-        pull-request: write
-      steps:
-        - users: actions/first-interaction@v1
+    steps:
+       - name: Greet the contributor
+         user: actions/first-interaction@v1
           with:
-            repo-token: ${{ secerts.GITHUB_TOKEN }}
-            issue-message: "Thank you for raising an issues! We appreciate your contribution."
-            pr-message: "Welcome to the project! Thank you for your first pull request."
+            repo-token: {{ secerts.GITHUB_TOKEN }}
+            issue-message: "Thank you for opening your first pull request! We appreciate your contribution."
 
 
